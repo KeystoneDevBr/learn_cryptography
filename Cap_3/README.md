@@ -1,7 +1,7 @@
 # Cifas Simétricas
 # Capítulo 3 - Técnicas Clássicas de Criptografia
 
-## 3.1 - Cifras de César (Caesar Cipher)
+# 3.1 - Cifras de César (Caesar Cipher)
 
 
 Criar um arquivo com o texto em claro
@@ -49,22 +49,25 @@ Key: 25 -- nffu nf bgufsu uif uphb qbsuz
 ```
 
 
-## 3.2 Cifras Monoalfabéticas (Monoalphabetic Cipher)
+# 3.2 Cifras Monoalfabéticas (Monoalphabetic Cipher)
 
 Criando uma cifra monoalfabética apenas com comandos linux:
 
 Permutando o alfabeto (abcdefghijkl.....) para DKVQFIBJWPESCXHTMYAUOLRGZN com o comando tr (translate or delete characters)
 ```sh
 echo "abcdefghijklmnopqrstuvwxyz" | tr '[a-z]' '[DKVQFIBJWPESCXHTMYAUOLRGZN]'
-# Desfaz a permutação
+```
+Desfaz a permutação
+```sh
 echo "DKVQFIBJWPESCXHTMYAUOLRGZN" | tr '[DKVQFIBJWPESCXHTMYAUOLRGZN]' '[a-z]'
 ```
 
-Exemplo de cifragem de uma mensagem:
-
+Exemplo de cifragem monoalfabética de uma mensagem:
 ```sh
 echo "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG" | tr '[DKVQFIBJWPESCXHTMYAUOLRGZN]' '[A-Z]'
-# Desfaz a permutação
+```
+Desfaz a cifra monoalfabética
+```sh
 echo "POK DTFMB GWUIZ EUN HTQJL UCKW POK VSYR AUX" | tr '[A-Z]' '[DKVQFIBJWPESCXHTMYAUOLRGZN]'
 ```
 
