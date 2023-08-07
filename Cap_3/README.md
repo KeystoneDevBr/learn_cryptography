@@ -1,14 +1,14 @@
 # Cifas Simétricas
 # Capítulo 3 - Técnicas Clássicas de Criptografia
 
-## 3.1 - Cifras de César
+## 3.1 - Cifras de César (Caesar Cipher)
 
 
 Criar um arquivo com o texto em claro
 ```sh
 echo "meet me after the toga party" > caesar-cipher-plaintext.txt
 ```
-Criptografar o texto rotacionan-do 3 passos para a esquerda
+Criptografar o texto rotacionando-o 3 passos para a esquerda
 ```sh
 rotix -f caesar-cipher-plaintext.txt -o caesar-ciphertext.txt -L -r 3
 
@@ -48,6 +48,37 @@ Key: 24 -- oggv og chvgtv vjg vqic rctva
 Key: 25 -- nffu nf bgufsu uif uphb qbsuz
 ```
 
+
+## 3.2 Cifras Monoalfabéticas (Monoalphabetic Cipher)
+
+Criando uma cifra monoalfabética apenas com comandos linux:
+
+Permutando o alfabeto (abcdefghijkl.....) para DKVQFIBJWPESCXHTMYAUOLRGZN com o comando tr (translate or delete characters)
+```sh
+echo "abcdefghijklmnopqrstuvwxyz" | tr '[a-z]' '[DKVQFIBJWPESCXHTMYAUOLRGZN]'
+# Desfaz a permutação
+echo "DKVQFIBJWPESCXHTMYAUOLRGZN" | tr '[DKVQFIBJWPESCXHTMYAUOLRGZN]' '[a-z]'
+```
+
+Exemplo de cifragem de uma mensagem:
+
+```sh
+echo "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG" | tr '[DKVQFIBJWPESCXHTMYAUOLRGZN]' '[A-Z]'
+# Desfaz a permutação
+echo "POK DTFMB GWUIZ EUN HTQJL UCKW POK VSYR AUX" | tr '[A-Z]' '[DKVQFIBJWPESCXHTMYAUOLRGZN]'
+```
+
+
+texto
+```sh
+
+```
+texto
+```sh
+
+```
+
+texto
 ```sh
 
 ```
