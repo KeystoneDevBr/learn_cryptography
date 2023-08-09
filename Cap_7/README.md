@@ -10,7 +10,7 @@ Os principais modos de operação são:
 ### [CFB – Cipher Feedback](#73---cfb---cipher-feedback-mode)
 ### [OFB – Output Feedback](#74---ofm---output-feedback-mode)
 ### [CTR - Counter](#75---counter-mode)
-### [XTS-AES ](#76---xts-aes)
+
 
 ## 7.1 - ECB – Eletronic CodeBook
 
@@ -105,18 +105,6 @@ openssl aes-256-ofb  -d -k ./figura.bmp.key -in ./figura.ofb.bmp.enc -out ./figu
 ```
 
 ## 7.5 - Counter Mode
-
-Cifrar a imagem figura.bmp com o algoritmo AES-256 no modo CTR
-```sh
-openssl aes-256-ctr -in ./figura.bmp -out ./figura.ctr.bmp.enc -k ./figura.bmp.key
-```
-
-Decifrar a imagem figura.ctr.bmp.enc com o algoritmo AES-256 no modo CTR
-```sh
-openssl aes-256-ctr  -d -k ./figura.bmp.key -in ./figura.ctr.bmp.enc -out ./figura.ctr.dec.bmp
-```
-
-## 7.6 - XTS-AES 
 
 Cifrar a imagem figura.bmp com o algoritmo AES-256 no modo CTR
 ```sh
