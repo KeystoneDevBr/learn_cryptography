@@ -36,6 +36,11 @@ Cifrar a imagem figura.bmp com o algoritmo AES-128 no modo ECB
 openssl aes-128-ecb -in ./figura.bmp -out ./figura.ecb.bmp.enc -k  ./figura.bmp.key -iv=0
 ```
 
+Decifrar a imagem figura.ecb.bmp.enc com o algoritmo AES-128 no modo ECB
+```sh
+openssl aes-128-ecb -d -k ./figura.bmp.key -iv=0 -in ./figura.ecb.bmp.enc -out ./figura.ecb.dec.bmp
+```
+
 Como os arquivos gerados tiveram o seus cabeçalhos alterados na cifragem, basta usar o programa bmphc para refazer os cabeçalhos, de modo a permitir a visualização das imagens.
 
 ```sh
