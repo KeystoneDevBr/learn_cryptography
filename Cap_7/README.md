@@ -5,7 +5,7 @@
 Enquanto o DES e AES descrevem o esquema de critografia, o modo como a criptografia é realizada dependerá do modo de operação adorato. 
 Os principais modos de operação são:
 
-### ECB – Eletronic CodeBook
+### [ECB – Eletronic CodeBook](#71---ecb--eletronic-codebook)
 ### CBC – Cipher Block Chaining
 ### CFB – Cipher Feedback
 ### OFB – Output Feedback
@@ -38,9 +38,10 @@ openssl aes-128-ecb -in ./figura.bmp -out ./figura.ecb.bmp.enc -k  ./figura.bmp.
 
 Como os arquivos gerados tiveram o seus cabeçalhos alterados na cifragem, basta usar o programa bmphc para refazer os cabeçalhos, de modo a permitir a visualização das imagens.
 
-
 ```sh
 cp figura.ecb.bmp.enc ./figura.ecb.bmp  ;
-./bmphc figura.bmp figura.ecb.bmp
 ```
 
+```sh
+./bmphc figura.bmp figura.ecb.bmp
+```
