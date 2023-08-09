@@ -85,12 +85,32 @@ Ferramentas web para decodificar descobrir a senha da Cifra de Vegenère:
 
 [Link 2](https://www.simonsingh.net/The_Black_Chamber/vigenere_cracking_tool.html)
 
-Texto descifrado
+Texto decifrado
 ```sh
 naotenhoportantomedodequeopresentevolumenaoencontreoacolhimentoqueeuesperoporpartedeumnumerobastanteconsideraveldecompatriotasmeusasaberosquesentemadordoescravocomoseforapropriaeaindamaiscomopartedeumadormaioradobrasilultrajadoehumilhadoosquetemaaltivezdepensareacoragemdeaceitarasconsequenciasdessepensamentoqueapatriacomoamaequandonaoexisteparaosfilhosmaisinfelizesnaoexisteparaosmaisdignosaquelesparaquemaescravidaodegradacaosistematicadanaturezahumanaporinteressesmercenarioseegoistassenaoeinfamanteparaohomemeducadoefelizqueainfligenaopodeseloparaoentedesfiguradoeoprimidoqueasofreporfimosqueconhecemasinfluenciassobreonossopaisdaquelainstituicaonopassadoenopresenteoseucustoruinosoepreveemosfeitosdesuacontinuacaoindefinida
 ```
+# 3.3 Steganografia (Steganofraphy)
 
-texto
+O objetivo desta tarefa é criar uma mensagem e adicioná-la á uma imagem, utilizando a aplicação steghide para escodê-la dentro da imagem.
+
+
+Criando a mensagem a ser escondida na imagem
 ```sh
+echo "Secret message to send to someone." > my-secret-message.txt
+```
 
+Oculta a mensagem na imagem da monalisa
+```sh
+steghide embed -ef ./my-secret-message.txt -cf ./monalisa.jpg -sf ./monalisa-steg.jpg -p myPassword
+```
+
+Extração da mensagem oculta
+```sh
+mv monalisa.jpg monalisa.old.jpg
+steghide extract -sf monalisa-steg.jpg -p myPassword
+```
+
+Visualização dos metadados das imagens
+```sh
+exiftool monalisa-steg.jpg
 ```
