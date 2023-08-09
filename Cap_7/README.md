@@ -48,4 +48,4 @@ cp figura.ecb.bmp.enc ./figura.ecb.bmp  ;
 
 Comparação da figura original com a criptografada
 
-<img src="./figura.bmp" width="30%" height="80%"> <img src="./figura.ecb.bmp" width="30%">
+<img src="./figura.bmp" width="50%" height="80%"> <img src="./figura.ecb.bmp" width="50%">
