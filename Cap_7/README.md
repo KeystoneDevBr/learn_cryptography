@@ -54,3 +54,25 @@ cp figura.ecb.bmp.enc ./figura.ecb.bmp  ;
 Comparação da figura original com a criptografada
 
 <img src="./figura.bmp" width="40%" height="80%"> <img src="./figura.ecb.bmp" width="40%">
+
+
+## 7.2 - CBC - Cipher Block Chaining Mode
+
+No modo CBC (cipher block chaining), o texto em claro é dividido em blocos, porém antes do algoritmo de criptografia processar o bloco, o bloco sofre uma adição com  os bits do bloco anterior.
+
+A figura a seguir ilustra o modo de operação do CBC - Cipher Block Chaining Mode
+
+![image](./CBC.jpg)
+
+Cifrar a imagem figura.bmp com o algoritmo AES-128 no modo CBC
+```sh
+openssl aes-128-cbc -in ./figura.bmp -out ./figura.cbc.bmp.enc -k  ./figura.bmp.key -iv=0
+```
+
+Decifrar a imagem figura.ecb.bmp.enc com o algoritmo AES-128 no modo CBC
+```sh
+openssl aes-128-cbc -d -k ./figura.bmp.key -iv=0 -in ./figura.cbc.bmp.enc -out ./figura.cbc.dec.bmp
+```
+
+As figuras a seguir mostram a comprarção entre a imagem original e a cirptografada com o algoritmo AES no modo CBC
+<img src="./figura.bmp" width="40%" height="80%"> <img src="./figura.cbc.bmp" width="40%">
