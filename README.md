@@ -3,7 +3,7 @@
 
 This tutorial help you learn about cryptography in Pratice.
 
-## Este projeto é para quem deseja aprender sobre cryptografia de modo prático!
+## Este projeto é para quem deseja aprender sobre cryptografia praticando!
 
 ## Get Start!!!!
 

@@ -1,4 +1,4 @@
-# Cifas Simétricas
+# Cifras Simétricas
 # Capítulo 3 - Técnicas Clássicas de Criptografia
 
 # 3.1 - Cifras de César (Caesar Cipher)
