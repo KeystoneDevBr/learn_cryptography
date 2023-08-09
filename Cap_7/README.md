@@ -7,9 +7,10 @@ Os principais modos de operação são:
 
 ### [ECB – Eletronic CodeBook](#71---ecb--eletronic-codebook)
 ### [CBC – Cipher Block Chaining](#72---cbc---cipher-block-chaining-mode)
-### CFB – Cipher Feedback
-### OFB – Output Feedback
-### CTR - Counter
+### [CFB – Cipher Feedback](#73---cfb---cipher-feedback-mode)
+### [OFB – Output Feedback](#74---ofm---output-feedback-mode)
+### [CTR - Counter](#75---counter-mode)
+### [XTS-AES ](#76---xts-aes)
 
 ## 7.1 - ECB – Eletronic CodeBook
 
@@ -76,3 +77,33 @@ openssl aes-128-cbc -d -k ./figura.bmp.key -iv=0 -in ./figura.cbc.bmp.enc -out .
 
 As figuras a seguir mostram a comprarção entre a imagem original e a cirptografada com o algoritmo AES no modo CBC
 <img src="./figura.bmp" width="40%" height="80%"> <img src="./figura.cbc.bmp" width="40%">
+
+
+# Outros modos de operação
+## 7.3 - CFB - Cipher Feedback Mode
+
+Cifrar a imagem figura.bmp com o algoritmo AES-256 no modo CFB
+```sh
+openssl aes-256-cfb -in ./figura.bmp -out ./figura.cfb.bmp.enc -k ./figura.bmp.key -iv=0
+```
+
+Decifrar a imagem figura.cfb.bmp.enc com o algoritmo AES-256 no modo CFB
+```sh
+openssl aes-256-cfb  -d -k ./figura.bmp.key -iv=0 -in ./figura.cfb.bmp.enc -out ./figura.cfb.dec.bmp
+```
+
+## 7.4 - OFM - Output Feedback Mode
+
+Cifrar a imagem figura.bmp com o algoritmo AES-256 no modo OFB
+```sh
+openssl aes-256-ofb -in ./figura.bmp -out ./figura.ofb.bmp.enc -k ./figura.bmp.key
+```
+
+Decifrar a imagem figura.ofb.bmp.enc com o algoritmo AES-256 no modo OFB
+```sh
+openssl aes-256-ofb  -d -k ./figura.bmp.key -in ./figura.ofb.bmp.enc -out ./figura.ofb.dec.bmp
+```
+
+## 7.5 - Counter Mode
+
+## 7.6 - XTS-AES 
