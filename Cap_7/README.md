@@ -31,7 +31,7 @@ openssl rand -hex 16 > figura.bmp.key
 #4bb108fab488702e0279b4c2a70d8179
 ```
 
-Cifrar a imagem figura.bmp com o aloritmo AES-128 no modo ECB
+Cifrar a imagem figura.bmp com o algoritmo AES-128 no modo ECB
 ```sh
 openssl aes-128-ecb -in ./figura.bmp -out ./figura.ecb.bmp.enc -k  ./figura.bmp.key -iv=0
 ```
@@ -45,3 +45,7 @@ cp figura.ecb.bmp.enc ./figura.ecb.bmp  ;
 ```sh
 ./bmphc figura.bmp figura.ecb.bmp
 ```
+
+Comparação da figura original com a criptografada
+
+<img src="./figura.bmp" width="30%" height="80%"> <img src="./figura.ecb.bmp" width="30%">
