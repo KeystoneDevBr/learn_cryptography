@@ -22,7 +22,7 @@ Para prover esse mecanismo, conforme ilustrado na figura a seguir, os seguites p
 
 <img src="./Garantia-da-confidencialidade.jpg" width="60%">
 
-#### Passo a passo para simular o envio e recebimento de mensagem criptografada com RSA com garantia da confidencialidade
+## Passo a passo para simular o envio e recebimento de mensagem criptografada com RSA com garantia da confidencialidade
 
 Antes de começarmos, vale apena verificar todos os algorítimos de chaves públicas disponíveis por meio do OpenSSL.
 
@@ -32,7 +32,7 @@ man openssl-genpkey
 ```
 Enfim agora vamos ao que interessa, vamos criptografar uma mensagem com a cifra assimétrica RSA com uma chave de  4096 bits, e recuperá-la com a chave pública do destinatário.
 
-##### Passo 1: Criar uma chave privada para o destinatário (Essa é a única chave que consegue recuperar a mensagem).
+## Passo 1: Criar uma chave privada para o destinatário (Essa é a única chave que consegue recuperar a mensagem).
 
 ```sh
 openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out chave-privada-do-destinatario.key
@@ -48,14 +48,14 @@ ou
 cat chave-privada-do-destinatario.key
 ```
 
-##### Passo 2: Exportação da Chave pública a partir da Chave privada
+## Passo 2: Exportação da Chave pública a partir da Chave privada
 Como a chave pública deve ser mantida em segredo pelo destinatário, é necessário criar uma chave pública para ser compartilhada com todos que queiram enviar mensagem ao destinatário de forma segura.
 
 ```sh
 openssl rsa -in chave-privada-do-destinatario.key -pubout > chave-publica-do-destinatario.key
 ```
 
-##### Passo 3: Cifrar uma mensagem com a Chave Pública RSA
+## Passo 3: Cifrar uma mensagem com a Chave Pública RSA
 Com a chave pública em mãos, o remetente poderá escrever mensagens secretas, de forma segura, ao destinatário.
 
 ```sh
@@ -63,14 +63,14 @@ openssl pkeyutl -encrypt -pubin  -in mensagem_secreta.txt -inkey chave-publica-d
 
 ```
 
-##### Passo 4: Decriptografar a mensagem com a Chave Privada RSA
+## Passo 4: Decriptografar a mensagem com a Chave Privada RSA
 Tomando base que a mensagem foi recebida pelo destinatário, este poderá decriptografá-la por meio da utilização da chave privada.
 
 ```sh
 openssl pkeyutl  -decrypt -in mensagem_criptografada_com_RSA.enc -out mensagem_decriptografada_com_RSA.txt -inkey chave-privada-do-destinatario.key
 ```
 
-##### Observações: 
+## Observações: 
 A criptografia RSA não pode ser utilizada para proteger mensagens ou arquivos cujo tamanho é maior que o tamanho do módulo utilizado pelo RSA.
 
 Exemplo: cifrando o arquivo Brackobama com a chave privada de 4096 bits.
