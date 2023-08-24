@@ -20,7 +20,7 @@ Para prover esse mecanismo, conforme ilustrado na figura a seguir, os seguites p
 
 3 - O destinatário recebe a mensagem, e a recupera com base na sua chave privada. Pois somente o portador da chave privada será capaz de decriptografar a mensagem.
 
-<img src="./Cap_9.1/garantia-da-autenticidade.jpg" width="60%">
+<img src="./Garantia-da-confidencialidade.jpg" width="60%">
 
 #### Passo a passo para simular o envio e recebimento de mensagem criptografada com RSA com garantia da confidencialidade
 
@@ -78,8 +78,8 @@ Exemplo: cifrando o arquivo Brackobama com a chave privada de 4096 bits.
 openssl pkeyutl -encrypt -pubin  -in BarackObama.pdf -inkey chave-publica-do-destinatario.key -out BarackObama.enc
 ```
 O seguinte erro ocorrerá devido o arquivo BarackObama.pdf ser maior que o módulo da chave privada RSA: 
+
+```sh
 Public Key operation error
 40B71E067B7F0000:error:0200006E:rsa routines:ossl_rsa_padding_add_PKCS1_type_2_ex:data too large for key size:../crypto/rsa/rsa_pk1.c:129:
-
-
-
+```

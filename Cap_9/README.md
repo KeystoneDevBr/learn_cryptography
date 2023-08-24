@@ -12,5 +12,6 @@ Confira o conteúdo nos links a seguir:
 ## [Cap 9.1 - Provendo Confidencialidade com RSA](./Cap_9.1/README.md)
 
 
+## [Cap 9.2 - Provendo a Autenticidade com RSA (Assinatura Digital)](./Cap_9.2/README.Md)
 
 
