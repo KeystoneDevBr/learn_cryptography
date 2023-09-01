@@ -8,7 +8,7 @@ Outro assunto indispensável para se trabalhar com criptografia assimétrica é 
 
 A seguir, serão abordadas, de maneira prática, a garantia da confidencialidade, autencidade e a criação de certificados digitais.
 
-## Cap 9.1 - Provendo Confidencialidade e Autenticidade com RSA  - (Criptografia e sinatura Digital)
+## Cap 9.3 - Provendo Confidencialidade e Autenticidade com RSA  - (Criptografia e sinatura Digital)
 
 A confidencialidade e autenticidade de uma mensagem podem ser garantidas ao mesmo tempo, com a utilização do mecanismo de Cifras Assimétricas RSA. 
 
