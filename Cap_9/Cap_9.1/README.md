@@ -8,7 +8,7 @@ Outro assunto indispensável para se trabalhar com criptografia assimétrica é 
 
 A seguir, serão abordadas, de maneira prática, a garantia da confidencialidade, autencidade e a criação de certificados digitais.
 
-## Cap 9.1 - Provendo Confidencialidade com RSA
+## Cap 9.1 - Provendo Confidencialidade com RSA (Criptografia RSA)
 
 Por meio da criptografia de chave pública com  RSA é possível garantir que somente pessoas autorizadas possam ter acesso à mensagem criptografada.
 

@@ -54,7 +54,7 @@ Para realizar a assinatura digital é utilizada a chave privada do remetente.
 openssl pkeyutl -sign -inkey chave-privada-do-remetente.key -in documento-para-assinatura.txt -out documento-assinado-enc.txt
 ```
 
-## Passo 4: Validas a Assinatura Digital do Documento
+## Passo 4: Validar a Assinatura Digital do Documento
 
 Para realizar a validação da assinatura digital utiliza-se a chave pública do remetente para recuperar o arquivo original e depois 
 é realizada uma comparação entre o arquivo recuperado e o assinado, para validar a assinatura.
