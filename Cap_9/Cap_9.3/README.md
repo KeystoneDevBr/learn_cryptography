@@ -25,15 +25,15 @@ Nesse exemplo, iremos assinar um documento com a crifra assimétrica RSA, cripto
 ## Passo 1: Criar uma chave privada para o destinatário e outra para o remetente (a chave privada é a única capaz de recupera a mensagem criptografada ).
 
 ```sh
-openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out chave-privada-do-destinatario.key
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:8192 -out chave-privada-do-destinatario.key
 openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out chave-privada-do-remetente.key
-
 ```
+
 Visualizando as chaves geradas: 
+
 ```sh
 openssl rsa -text -noout -in chave-privada-do-destinatario.key
 openssl rsa -text -noout -in chave-privada-do-remetente.key
-
 ```
 ou 
 ```sh
@@ -50,19 +50,32 @@ openssl rsa -in chave-privada-do-remetente.key -pubout > chave-publica-do-remete
 openssl rsa -in chave-privada-do-destinatario.key -pubout > chave-publica-do-destinatario.key
 ```
 
-## Passo 3: 
-
-
-```sh
-
-```
-
-## Passo 4: Valida a Assinatura Digital do Documento
-
+## Passo 3: Assinar o Documento a ser Enviado
 
 ```sh
-openssl rsautl -verify -pubin -pkcs -inkey chave-publica-do-remetente.key -in documento-assinado-enc.txt -out documento-validado.txt
-
-openssl pkeyutl -verify -pubin -inkey chave-publica-do-remetente.key -in documento-validado.txt -sigfile documento-assinado-enc.txt 
-
+openssl pkeyutl -sign -inkey chave-privada-do-remetente.key -in documento-para-assinatura.txt -out documento-assinado-enc.txt
 ```
+
+## Passo 4: Criptografar o Documento Assinado com a Chave Pública do Destinatário
+
+```sh
+openssl pkeyutl -encrypt -pubin  -in documento-assinado-enc.txt -inkey chave-publica-do-destinatario.key -out documento-assinado-e-criptografado-enc.txt
+```
+## Passo 5: Decriptografar a mensagem com a Chave Privada do Destinatário
+
+```sh
+openssl pkeyutl  -decrypt -in documento-assinado-e-criptografado-enc.txt -out documento-decriptografado-enc.txt -inkey chave-privada-do-destinatario.key
+```
+
+## Parte 6: Validação da Assinatura do Documento Recuperado
+
+```sh
+openssl rsautl -verify -pubin -pkcs -inkey chave-publica-do-remetente.key -in documento-decriptografado-enc.txt -out documento-validado.txt
+
+openssl pkeyutl -verify -pubin -inkey chave-publica-do-remetente.key -in documento-validado.txt -sigfile documento-decriptografado-enc.txt 
+```
+
+## Saída da Validação
+
+"The command rsautl was deprecated in version 3.0. Use 'pkeyutl' instead.
+Signature Verified Successfully"
