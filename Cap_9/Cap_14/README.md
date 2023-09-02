@@ -36,24 +36,59 @@ openssl rsa -in chave-privada-do-cliente-A.key -pubout > chave-publica-do-client
 #openssl rsa -text -noout -in chave-privada-do-cliente-A.key 
 ```
 
-## Passo 2: Criar a Autoridade Certificadora (Certification Authority) para Imissão de Certificados.
+## Passo 2: Criar a Autoridade Certificadora (Certification Authority) para Emissão de Certificados.
 
 Neste exemmplo, a Autoridade Certificadora simulará a função da AC raiz Brasileira (ICP-Brasil)
 
 ### Passo 2.1: Criar a Chave privada com Senha para a Autoridade Certificadora
 
-Essa chave poderá ser gerada a senha, para issso, bata omitir o altorírimo de criptografia (-aes256)
+Essa chave poderá ser gerada sem a senha, para issso, basta omitir o algorítmo de criptografia (-aes256)
+
 ```sh
 openssl genrsa -aes256 -out CA-chave-privada.key 4096 #password: senha@123
-#(Opcional) Emissão da chave pública
+#(Opcional) Emissão da chave pública da Autoridade Certificadora
 # openssl rsa -in CA-chave-privada.key -pubout > CA-chave-publica.key
 ```
-### Passo 2.1: Gerar o Certificado para a Autoridade Certificadora Raiz (Root CA)
-Para que a Autoridade certificadora possa emitir certificados
+### Passo 2.1: Gerar o Certificado da Autoridade Certificadora Raiz (Root CA)
+
+Para que a entidade certificadora possa emitir certificados paras chaves públicas do Cliente A e B é necessário primeiro criar um certificado auto-assinado para a Autoridade Certificadora.
 
 ```sh
 openssl req -x509 -new -nodes -key CA-chave-privada.key -sha256 -days  1826 -out CA-certificado.crt -subj '/C=BR/O=ICP-Brasil/OU=Instituto Nacional de Tecnologia da Informacao - ITI/CN=Autoridade Certificadora Raiz Brasileira v11' #password: senha@123
+# (Opcional) visualizar os dados do certificado
+# openssl x509 -text -noout -in CA-certificado.crt 
 ```
 
+## Passo 3: Emissão do Certificado para o Cliente A
+
+Para concluir a emissão do certificado para o Cliente A, é necessário que primeiro ele envie uma requisição à Autoridade Certificadora, comprovando sua identidade por meio formal, e após aprovação, a Autoridade Certificadora emite um certificado, coforme exemplicicado a seguir:
+
+```sh
+openssl req -new -key chave-privada-do-cliente-A.key -out requisicao-cert-cliente-A.req  -sha3-512 -subj '/C=BB/ST=Distrito Federal/L=Brasilia/O=KeystoneDevBr/OU=Departamento de Criptografia/CN=br.keystonedevbr.com/emailAddress=contato@keystonedevbr.com.br'
+# (Opcional) Visulizar os dados da requisição
+# openssl req --text --noout -in requisicao-cert-cliente-A.req
+```
+
+Emissão do certificado para o cliente A, pela Autoridade Certificadora
+```sh
+openssl x509 -req -in requisicao-cert-cliente-A.req -CA CA-certificado.crt -CAkey CA-chave-privada.key -CAcreateserial -out certificado-do-cliente-A.crt -days 365 -sha3-512 -subj '/C=BB/ST=Distrito Federal/L=Brasilia/O=KeystoneDevBr/OU=Departamento de Criptografia/CN=br.keystonedevbr.com/emailAddress=contato@keystonedevbr.com.br' #CA-chave-privada.key password: senha@123
+
+#(Opcional) Visualizar os dados do certificado
+#openssl x509 -text -noout -in certificado-do-cliente-A.crt
+```
+## Passo 4: Validação do Certificado e Recuperação da Chave Pública do Cliente A
+
+Em posse do certificado assinado pela Autoridade Certificadora, o Cliente A poderá enviá-lo ao Cliente B,que por sua vez, poderá realizar a validação e a recuperação da chave pública, de modo, que consiga enviar mensagem de B para A de modo criptografado.
+
+```sh
+openssl verify -CAfile CA-certificado.crt certificado-do-cliente-A.crt
+openssl x509 -pubkey -noout -in certificado-do-cliente-A.crt > chave-publica-do-certificado-cliente-A.key
+```
+
+Adicionalmente, você poderá realizar a comparação bit a bit da chave pública  do cliente com a enviada dentro do certificado. A falte de informação da saída indica que os dois aquivos são idênticos.
+
+```sh
+cmp chave-publica-do-cliente-A.key chave-publica-do-certificado-cliente-A.key 
+```
 
 
