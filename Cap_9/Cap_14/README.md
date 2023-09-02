@@ -33,7 +33,7 @@ Similarmente como o descrito nos exemplos do  Cap 9, será criado uma par de cha
 openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out chave-privada-do-cliente-A.key
 openssl rsa -in chave-privada-do-cliente-A.key -pubout > chave-publica-do-cliente-A.key
 # (Opcional) Visualização da chave privada emitida.
-#openssl rsa -text -noout -in chave-privada-do-cliente-A.key 
+# openssl rsa -text -noout -in chave-privada-do-cliente-A.key 
 ```
 
 ## Passo 2: Criar a Autoridade Certificadora (Certification Authority) para Emissão de Certificados.
@@ -46,7 +46,7 @@ Essa chave poderá ser gerada sem a senha, para issso, basta omitir o algorítmo
 
 ```sh
 openssl genrsa -aes256 -out CA-chave-privada.key 4096 #password: senha@123
-#(Opcional) Emissão da chave pública da Autoridade Certificadora
+# (Opcional) Emissão da chave pública da Autoridade Certificadora
 # openssl rsa -in CA-chave-privada.key -pubout > CA-chave-publica.key
 ```
 ### Passo 2.1: Gerar o Certificado da Autoridade Certificadora Raiz (Root CA)
@@ -72,9 +72,8 @@ openssl req -new -key chave-privada-do-cliente-A.key -out requisicao-cert-client
 Emissão do certificado para o cliente A, pela Autoridade Certificadora
 ```sh
 openssl x509 -req -in requisicao-cert-cliente-A.req -CA CA-certificado.crt -CAkey CA-chave-privada.key -CAcreateserial -out certificado-do-cliente-A.crt -days 365 -sha3-512 -subj '/C=BB/ST=Distrito Federal/L=Brasilia/O=KeystoneDevBr/OU=Departamento de Criptografia/CN=br.keystonedevbr.com/emailAddress=contato@keystonedevbr.com.br' #CA-chave-privada.key password: senha@123
-
-#(Opcional) Visualizar os dados do certificado
-#openssl x509 -text -noout -in certificado-do-cliente-A.crt
+# (Opcional) Visualizar os dados do certificado
+# openssl x509 -text -noout -in certificado-do-cliente-A.crt
 ```
 ## Passo 4: Validação do Certificado e Recuperação da Chave Pública do Cliente A
 
