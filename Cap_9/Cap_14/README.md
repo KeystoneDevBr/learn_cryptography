@@ -40,6 +40,11 @@ openssl rsa -in chave-privada-do-cliente-A.key -pubout > chave-publica-do-client
 
 Neste exemmplo, a Autoridade Certificadora simulará a função da AC raiz Brasileira (ICP-Brasil)
 
-### Passo 2.1: 
+### Passo 2.1: Criar a Chave privada com Senha para a Autoridade Certificadora
+
+Essa chave poderá ser gerada a senha, para issso, bata omitir o altorírimo de criptografia (-aes256)
+```sh
+openssl genrsa -aes256 -out CA-chave-privada.key 4096 #password: senha@123
+``````
 
 
