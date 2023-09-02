@@ -24,6 +24,9 @@ Este projeto está baseado no livro: [Criptografia e Segurança de Redes: princ�
 
 ### [Capítulo 8 - Geradores de Bit Aleatório e Cifras de Fluxo](./Cap_8/)
 
-### [Capítulo 9 - Cifras Assimétricas](./Cap_9/)
+### [Capítulo 9 - Cifras Assimétricas RSA](./Cap_9/)
 
 ### [Capítulo 11 - Funções Hash](./Cap_11/)
+
+
+### [Capítulo 14 - Emissão de Certificados RSA](./Cap_9/Cap_14/README.md)

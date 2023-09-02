@@ -15,4 +15,6 @@ Confira o conteúdo nos links a seguir:
 ## [Cap 9.2 - Provendo a Autenticidade com RSA (Assinatura Digital)](./Cap_9.2/README.Md)
 
 
-## [Cap 9.3 - Cap 9.3 - Provendo Confidencialidade e Autenticidade com RSA  - (Criptografia e sinatura Digital)](./Cap_9.3/README.md)
+## [Cap 9.3 - Provendo Confidencialidade e Autenticidade com RSA  - (Criptografia e sinatura Digital)](./Cap_9.3/README.md)
+
+## [Cap 14 - Emissão de Certificado Digital](./Cap_14/README.md)
