@@ -45,6 +45,15 @@ Neste exemmplo, a Autoridade Certificadora simulará a função da AC raiz Brasi
 Essa chave poderá ser gerada a senha, para issso, bata omitir o altorírimo de criptografia (-aes256)
 ```sh
 openssl genrsa -aes256 -out CA-chave-privada.key 4096 #password: senha@123
-``````
+#(Opcional) Emissão da chave pública
+# openssl rsa -in CA-chave-privada.key -pubout > CA-chave-publica.key
+```
+### Passo 2.1: Gerar o Certificado para a Autoridade Certificadora Raiz (Root CA)
+Para que a Autoridade certificadora possa emitir certificados
+
+```sh
+openssl req -x509 -new -nodes -key CA-chave-privada.key -sha256 -days  1826 -out CA-certificado.crt -subj '/C=BR/O=ICP-Brasil/OU=Instituto Nacional de Tecnologia da Informacao - ITI/CN=Autoridade Certificadora Raiz Brasileira v11' #password: senha@123
+```
+
 
 
