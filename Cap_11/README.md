@@ -4,7 +4,7 @@
 
 As principais funções hash são as famíias SHA-1, SHA-2 e SHA-3, sendo que as duas primeiras se diferem pelo comprimento das cifras, enquanto a terceira se difere pelo método de geração da cifra.
 
-## Cálculo de Hash MD5, HA-1, SHA-2 e SHA-3
+## Cálculo de Hash MD5, SHA-1, SHA-2 e SHA-3
 
 ```sh
 #1 - Listagem de funções Hash suportadas pelo OpenSSL
